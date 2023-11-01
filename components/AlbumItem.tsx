@@ -6,14 +6,14 @@ import Image from "next/image";
 
 interface AlbumItemProps {
   data: Album;
-  onClick: (id: string) => void;
+  onClick: (name: string) => void;
 }
 
 const AlbumItem: React.FC<AlbumItemProps> = ({ data, onClick }) => {
   const imagePath = useLoadCover(data);
   return (
     <div
-      onClick={() => {}}
+      onClick={() => onClick(data.name)}
       className="
                 relative
                 group

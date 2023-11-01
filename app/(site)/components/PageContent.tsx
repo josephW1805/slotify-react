@@ -1,15 +1,34 @@
 "use client";
 import AlbumItem from "@/components/AlbumItem";
 import { Album } from "@/types";
+import { useRouter } from "next/navigation";
 
 interface PageContentProps {
   albums: Album[];
 }
 
 const PageContent: React.FC<PageContentProps> = ({ albums }) => {
+  const router = useRouter();
   if (albums.length === 0) {
     return <div className="mt-4 text-neutral-400">No albums available.</div>;
   }
+
+  const handleAlbumClick = (slug: string) => {
+    // Navigate to the individual album page with the given slug
+    router.push(`/albums/${slug}`);
+  };
+
+  function createSlugFromString(inputString: string) {
+    const slug = inputString
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .trim();
+
+    return slug;
+  }
+
   return (
     <div
       className="
@@ -26,7 +45,10 @@ const PageContent: React.FC<PageContentProps> = ({ albums }) => {
     >
       {albums.map((album, index) => (
         <div key={index}>
-          <AlbumItem data={album} onClick={() => {}} />
+          <AlbumItem
+            data={album}
+            onClick={() => handleAlbumClick(createSlugFromString(album.name))}
+          />
         </div>
       ))}
     </div>
