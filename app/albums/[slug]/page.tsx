@@ -14,6 +14,7 @@ const AlbumPage = async ({ params }: { params: { slug: string } }) => {
 
   const albumId = album.id;
   const songs = await getSongsByAlbum(albumId.toString());
+  const albumCover = useLoadCover(album);
 
   return (
     <div
@@ -34,7 +35,7 @@ const AlbumPage = async ({ params }: { params: { slug: string } }) => {
                 alt="Playlist"
                 className="object-cover"
                 fill
-                src="/images/liked.png"
+                src={albumCover || "/images/liked.png"}
               />
             </div>
             <div className="flex flex-col gap-y-2 mt-4 md:mt-0">

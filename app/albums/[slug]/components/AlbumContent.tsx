@@ -7,12 +7,13 @@ import { useUser } from "@/hooks/useUser";
 import { Song } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 
-interface LikedContentProps {
+interface AlbumContentProps {
   songs: Song[];
 }
 
-const AlbumContent: React.FC<LikedContentProps> = ({ songs }) => {
+const AlbumContent: React.FC<AlbumContentProps> = ({ songs }) => {
   const router = useRouter();
   const { isLoading, user } = useUser();
 
@@ -21,6 +22,7 @@ const AlbumContent: React.FC<LikedContentProps> = ({ songs }) => {
   useEffect(() => {
     if (!isLoading && !user) {
       router.replace("/");
+      toast.error("You must sign in");
     }
   }, [isLoading, user, router]);
 
