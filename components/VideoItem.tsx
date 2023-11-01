@@ -25,6 +25,7 @@ const VideoItem: React.FC<{ video: Video }> = ({ video }) => {
         url={video.video_url}
         controls
         muted={isIOS} // Mute for iOS devices
+        autoplay
       />
       <div className="absolute bottom-24 right-5">
         <PlayButton />
