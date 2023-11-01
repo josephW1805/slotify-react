@@ -1,6 +1,7 @@
 "use client";
 import AlbumItem from "@/components/AlbumItem";
 import { Album } from "@/types";
+import createSlugFromString from "@/utils/helper";
 import { useRouter } from "next/navigation";
 
 interface PageContentProps {
@@ -17,17 +18,6 @@ const PageContent: React.FC<PageContentProps> = ({ albums }) => {
     // Navigate to the individual album page with the given slug
     router.push(`/albums/${slug}`);
   };
-
-  function createSlugFromString(inputString: string) {
-    const slug = inputString
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .trim();
-
-    return slug;
-  }
 
   return (
     <div
