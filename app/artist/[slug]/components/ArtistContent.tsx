@@ -4,19 +4,20 @@ import { createSlugFromString } from "@/libs/helpers";
 import { Album } from "@/types";
 import { useRouter } from "next/navigation";
 
-interface PageContentProps {
+interface ArtistContentProps {
+  artistId: string;
   albums: Album[];
 }
 
-const PageContent: React.FC<PageContentProps> = ({ albums }) => {
+const ArtistContent: React.FC<ArtistContentProps> = ({ artistId, albums }) => {
   const router = useRouter();
   if (albums.length === 0) {
     return <div className="mt-4 text-neutral-400">No albums available.</div>;
   }
 
-  const handleAlbumClick = (slug: string) => {
+  const handleAlbumClick = (artistId: string, slug: string) => {
     // Navigate to the individual album page with the given slug
-    router.push(`/albums/${slug}`);
+    router.push(`artists/${artistId}/albums/${slug}`);
   };
 
   return (
@@ -37,7 +38,9 @@ const PageContent: React.FC<PageContentProps> = ({ albums }) => {
         <div key={index}>
           <AlbumItem
             data={album}
-            onClick={() => handleAlbumClick(createSlugFromString(album.name))}
+            onClick={() =>
+              handleAlbumClick(artistId, createSlugFromString(album.name))
+            }
           />
         </div>
       ))}
@@ -45,4 +48,4 @@ const PageContent: React.FC<PageContentProps> = ({ albums }) => {
   );
 };
 
-export default PageContent;
+export default ArtistContent;

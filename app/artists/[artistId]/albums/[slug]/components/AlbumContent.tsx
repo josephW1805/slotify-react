@@ -21,7 +21,7 @@ const AlbumContent: React.FC<AlbumContentProps> = ({ songs }) => {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.replace("/");
+      router.back();
       toast.error("You must sign in");
     }
   }, [isLoading, user, router]);

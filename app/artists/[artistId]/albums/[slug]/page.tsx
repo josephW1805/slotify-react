@@ -1,4 +1,4 @@
-import getAllAlbums from "@/actions/getAllAlbums";
+import getAlbumsByArtist from "@/actions/getAlbumsByArtist";
 import getSongsByAlbum from "@/actions/getSongsByAlbum";
 import Header from "@/components/Header";
 import Image from "next/image";
@@ -8,8 +8,13 @@ import { BiSolidVideos } from "react-icons/bi";
 import Link from "next/link";
 import { createSlugFromString } from "@/libs/helpers";
 
-const AlbumPage = async ({ params }: { params: { slug: string } }) => {
-  const albums = await getAllAlbums();
+const AlbumPage = async ({
+  params,
+}: {
+  params: { slug: string; artistId: string };
+}) => {
+  console.log(params.artistId);
+  const albums = await getAlbumsByArtist(params.artistId);
   const album = albums.filter(
     (ele) => createSlugFromString(ele.name) === params.slug
   )[0];
