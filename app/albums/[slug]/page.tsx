@@ -1,7 +1,6 @@
 import getAllAlbums from "@/actions/getAllAlbums";
 import getSongsByAlbum from "@/actions/getSongsByAlbum";
 import Header from "@/components/Header";
-import useLoadCover from "@/hooks/useLoadCover";
 import createSlugFromString from "@/utils/helper";
 import Image from "next/image";
 import AlbumContent from "./components/AlbumContent";
@@ -14,7 +13,7 @@ const AlbumPage = async ({ params }: { params: { slug: string } }) => {
 
   const albumId = album.id;
   const songs = await getSongsByAlbum(albumId.toString());
-  const albumCover = useLoadCover(album);
+  const albumCover = album.public_url;
 
   return (
     <div
@@ -35,7 +34,7 @@ const AlbumPage = async ({ params }: { params: { slug: string } }) => {
                 alt="Playlist"
                 className="object-cover"
                 fill
-                src={albumCover || "/images/liked.png"}
+                src={albumCover}
               />
             </div>
             <div className="flex flex-col gap-y-2 mt-4 md:mt-0">

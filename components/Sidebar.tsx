@@ -10,6 +10,7 @@ import Library from "./Library";
 import { Song } from "@/types";
 import usePlayer from "@/hooks/usePlayer";
 import { twMerge } from "tailwind-merge";
+import { AiFillHeart } from "react-icons/ai";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -35,11 +36,17 @@ const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
         href: "/search",
       },
       {
-        icon: BiSolidVideos,
-        label: "Video",
-        active: pathname === "/video",
-        href: "/video",
+        icon: AiFillHeart,
+        label: "Liked Songs",
+        active: pathname === "/liked",
+        href: "/liked",
       },
+      // {
+      //   icon: BiSolidVideos,
+      //   label: "Video",
+      //   active: pathname === "/video",
+      //   href: "/video",
+      // },
     ],
     [pathname]
   );

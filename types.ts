@@ -8,6 +8,7 @@ export interface Album {
     id: string;
     name: string;
     image_path: string;
+    public_url: string;
     published_date: Date;
 }
 
