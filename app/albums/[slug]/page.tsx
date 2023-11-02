@@ -1,12 +1,12 @@
 import getAllAlbums from "@/actions/getAllAlbums";
 import getSongsByAlbum from "@/actions/getSongsByAlbum";
 import Header from "@/components/Header";
-import createSlugFromString from "@/utils/helper";
 import Image from "next/image";
 import AlbumContent from "./components/AlbumContent";
 import Button from "@/components/Button";
 import { BiSolidVideos } from "react-icons/bi";
 import Link from "next/link";
+import { createSlugFromString } from "@/libs/helpers";
 
 const AlbumPage = async ({ params }: { params: { slug: string } }) => {
   const albums = await getAllAlbums();

@@ -1,7 +1,7 @@
 "use client";
 import AlbumItem from "@/components/AlbumItem";
+import { createSlugFromString } from "@/libs/helpers";
 import { Album } from "@/types";
-import createSlugFromString from "@/utils/helper";
 import { useRouter } from "next/navigation";
 
 interface PageContentProps {

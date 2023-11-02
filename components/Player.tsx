@@ -6,18 +6,18 @@ import usePlayer from "@/hooks/usePlayer";
 import PlayerContent from "./PlayerContent";
 
 const Player = () => {
-    const player = usePlayer();
-    const { song } = useGetSongById(player.activeId);
+  const player = usePlayer();
+  const { song } = useGetSongById(player.activeId);
 
-    const songUrl = useLoadSongUrl(song!);
+  const songUrl = useLoadSongUrl(song!);
 
-    if (!song || !songUrl || !player.activeId) {
-        return null;
-    }
+  if (!song || !songUrl || !player.activeId) {
+    return null;
+  }
 
-    return (
-        <div
-            className="
+  return (
+    <div
+      className="
                 fixed
                 bottom-0
                 bg-black
@@ -26,14 +26,10 @@ const Player = () => {
                 h-[80px]
                 px-4
             "
-        >
-            <PlayerContent
-                key={songUrl}
-                song={song}
-                songUrl={songUrl}
-            />
-        </div>
-    )
-}
+    >
+      <PlayerContent key={songUrl} song={song} songUrl={songUrl} />
+    </div>
+  );
+};
 
-export default Player
+export default Player;

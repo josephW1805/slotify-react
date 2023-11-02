@@ -2,18 +2,17 @@ import { Album } from "@/types";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const useLoadCover = (album: Album) => {
-    const supabaseClient = useSupabaseClient();
+  const supabaseClient = useSupabaseClient();
 
-    if (!album) {
-        return null;
-    }
+  if (!album) {
+    return null;
+  }
 
-    const { data: imageData } = supabaseClient
-        .storage
-        .from('images')
-        .getPublicUrl(album.image_path);
+  const { data: imageData } = supabaseClient.storage
+    .from("images")
+    .getPublicUrl(album.image_path);
 
-    return imageData.publicUrl;
-}
+  return imageData.publicUrl;
+};
 
-export default useLoadCover
+export default useLoadCover;

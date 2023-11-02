@@ -1,17 +1,16 @@
-import { Song } from "@/types";
+import { Album } from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-const getSongs = async (): Promise<Song[]> => {
+const getAllArtists = async (): Promise<Album[]> => {
   const supabase = createServerComponentClient({
     cookies: cookies,
   });
 
   const { data, error } = await supabase
-    .from("songs")
+    .from("artists")
     .select("*")
-    .order("album_id", { ascending: true })
-    .order("created_at", { ascending: true });
+    .order("name");
 
   if (error) {
     console.log(error);
@@ -20,4 +19,4 @@ const getSongs = async (): Promise<Song[]> => {
   return (data as any) || [];
 };
 
-export default getSongs;
+export default getAllArtists;
