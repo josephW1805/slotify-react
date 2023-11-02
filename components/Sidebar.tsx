@@ -26,7 +26,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
       {
         icon: HiHome,
         label: "Home",
-        active: pathname !== "/search" && pathname !== "/video",
+        active: pathname !== "/search" && pathname !== "/liked",
         href: "/",
       },
       {
@@ -41,12 +41,6 @@ const Sidebar: React.FC<SidebarProps> = ({ children, songs }) => {
         active: pathname === "/liked",
         href: "/liked",
       },
-      // {
-      //   icon: BiSolidVideos,
-      //   label: "Video",
-      //   active: pathname === "/video",
-      //   href: "/video",
-      // },
     ],
     [pathname]
   );

@@ -4,6 +4,9 @@ import Header from "@/components/Header";
 import createSlugFromString from "@/utils/helper";
 import Image from "next/image";
 import AlbumContent from "./components/AlbumContent";
+import Button from "@/components/Button";
+import { BiSolidVideos } from "react-icons/bi";
+import Link from "next/link";
 
 const AlbumPage = async ({ params }: { params: { slug: string } }) => {
   const albums = await getAllAlbums();
@@ -52,6 +55,19 @@ const AlbumPage = async ({ params }: { params: { slug: string } }) => {
               >
                 {album.name}
               </h1>
+              {album.has_video && (
+                <Link href="/video">
+                  <Button>
+                    <div
+                      className="flex
+                    items-center justify-center"
+                    >
+                      <BiSolidVideos size={25} />
+                      <span>MUSIC VIDEO</span>
+                    </div>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

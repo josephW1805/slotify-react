@@ -3,6 +3,8 @@
 import { Album } from "@/types";
 import useLoadCover from "@/hooks/useLoadCover";
 import Image from "next/image";
+import PlayButton from "./PlayButton";
+import { BiSolidVideos } from "react-icons/bi";
 
 interface AlbumItemProps {
   data: Album;
@@ -57,9 +59,14 @@ const AlbumItem: React.FC<AlbumItemProps> = ({ data, onClick }) => {
                         pb-4
                         w-full
                         truncate
+                        flex
+                        items-center
+                        justify-between
+                        
                     "
         >
           {data.published_date.toString()}
+          {data.has_video && <BiSolidVideos size={25} />}
         </p>
       </div>
       <div
@@ -68,7 +75,9 @@ const AlbumItem: React.FC<AlbumItemProps> = ({ data, onClick }) => {
                 bottom-24
                 right-5
             "
-      ></div>
+      >
+        <PlayButton />
+      </div>
     </div>
   );
 };

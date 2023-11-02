@@ -10,6 +10,7 @@ export interface Album {
     image_path: string;
     public_url: string;
     published_date: Date;
+    has_video: boolean;
 }
 
 export interface Song {

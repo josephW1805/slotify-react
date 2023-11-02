@@ -4,11 +4,12 @@ import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
-import { BiSearch, BiSolidVideos } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 import Button from "./Button";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import { FaUserAlt } from "react-icons/fa";
+import { AiFillHeart } from "react-icons/ai";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -62,10 +63,10 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <BiSearch className="text-black" size={20} />
           </button>
           <button
-            onClick={() => router.push("/video")}
+            onClick={() => router.push("/liked")}
             className="rounded-full p-2 bg-white items-center justify-center hover:opacity-75 transition"
           >
-            <BiSolidVideos className="text-black" size={20} />
+            <AiFillHeart className="text-black" size={20} />
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
