@@ -59,7 +59,7 @@ const MediaItem: React.FC<MediaItemProps> = ({ data, onClick }) => {
             overflow-hidden
             "
       >
-        <p className="text-white truncate">{data.title}</p>
+        <p className="text-white max-w-xs truncate">{data.title}</p>
         <p className="text-neutral-400 text-sm truncate">{data.author}</p>
       </div>
     </div>

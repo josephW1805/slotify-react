@@ -13,7 +13,6 @@ const AlbumPage = async ({
 }: {
   params: { slug: string; artistId: string };
 }) => {
-  console.log(params.artistId);
   const albums = await getAlbumsByArtist(params.artistId);
   const album = albums.filter(
     (ele) => createSlugFromString(ele.name) === params.slug
